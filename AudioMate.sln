@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioMate.Core", "src\AudioMate.Core\AudioMate.Core.csproj", "{585E312A-1B8A-4324-AD37-0DBD8D9390C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioMate.App", "src\AudioMate.App\AudioMate.App.csproj", "{83A7E779-AA7F-411C-9212-A41930DF0E52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioMate.Core.Tests", "tests\AudioMate.Core.Tests\AudioMate.Core.Tests.csproj", "{07EA56AF-37C7-4188-911D-F2FA71898935}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Debug|x64.Build.0 = Debug|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Release|x64.ActiveCfg = Release|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Release|x64.Build.0 = Release|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6}.Release|x86.Build.0 = Release|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Debug|x64.Build.0 = Debug|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Debug|x86.Build.0 = Debug|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Release|x64.ActiveCfg = Release|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Release|x64.Build.0 = Release|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Release|x86.ActiveCfg = Release|Any CPU
+		{83A7E779-AA7F-411C-9212-A41930DF0E52}.Release|x86.Build.0 = Release|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Debug|x64.Build.0 = Debug|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Debug|x86.Build.0 = Debug|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Release|x64.ActiveCfg = Release|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Release|x64.Build.0 = Release|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Release|x86.ActiveCfg = Release|Any CPU
+		{07EA56AF-37C7-4188-911D-F2FA71898935}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{585E312A-1B8A-4324-AD37-0DBD8D9390C6} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{83A7E779-AA7F-411C-9212-A41930DF0E52} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{07EA56AF-37C7-4188-911D-F2FA71898935} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+EndGlobal
