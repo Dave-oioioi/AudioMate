@@ -3,7 +3,7 @@
 
 #define MyAppName "AudioMate"
 #ifndef MyAppVersion
-  #define MyAppVersion "0.1.0"
+  #define MyAppVersion "0.1.13"
 #endif
 #define MyAppPublisher "AudioMate"
 #define MyAppExeName "AudioMate.App.exe"

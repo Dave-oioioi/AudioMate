@@ -1,66 +1,102 @@
 # AudioMate
 
-AudioMate is a Windows tray-first audio assistant based on the design spec in
-`docs/superpowers/specs/2026-05-29-audiomate-design.md`.
+![Version](https://img.shields.io/badge/version-0.1.13-blue)
+![Platform](https://img.shields.io/badge/platform-Windows-0078d4)
+![.NET](https://img.shields.io/badge/.NET-9.0-512bd4)
+![License](https://img.shields.io/badge/license-private-lightgrey)
 
-This first implementation pass establishes:
+AudioMate 是一个 Windows tray-first audio assistant，基于 `docs/superpowers/specs/2026-05-29-audiomate-design.md` 设计实现。
 
-- A WinForms tray host with enable/pause, mode, duck volume, Codex narration, startup, and mini settings controls.
-- A core library for configuration, music preset matching, narration queueing, and duck/restore state transitions.
-- Windows render-session scanning and music-session duck/restore through NAudio.
-- Ordinary audio ducking: when non-music apps are audible, configured music/BGM apps are lowered automatically.
-- Chinese UI labels for the tray menu, prompts, notifications, and mini settings window.
-- Fade-out and fade-in volume transitions with adjustable durations.
-- Microphone input ducking with an adjustable microphone threshold.
-- Excluded trigger apps: selected apps can be ignored so they do not lower music/BGM.
-- Settings pages add music/BGM targets and excluded apps through scanning instead of manual process-name entry.
-- App selection prioritizes Windows volume-mixer/audio-session apps and labels them in the picker, then supplements them with running processes, registered app paths, and common install folders.
-- iOS-style app/tray icon and installer support for closing an existing background AudioMate before overwrite install without requiring a PC restart.
-- A rollback helper that installs the newest previous local installer from `artifacts\installer`.
-- A tray-hosted narration worker that claims queued Codex requests, pre-ducks music, speaks via the Aural TTS script, then restores volume after the configured delay.
-- A file-backed narration queue under `%LOCALAPPDATA%\AudioMate\NarrationQueue`.
-- A Codex/Aural bridge script that queues narration when AudioMate is running and falls back to the standalone speech flow when it is not.
-- JSON settings under `%APPDATA%\AudioMate\config.json`.
-- Unit tests for process matching, config recovery, queue ordering, and ducking state.
+---
 
-## Build
+## 功能概述
+
+- **托盘控制**：提供启用/暂停、模式切换、duck volume、Codex narration、startup 和 mini settings 控制。
+- **自动压低音量**：当普通音频或麦克风触发时，自动降低指定 music/BGM 应用音量，并在延迟后恢复。
+- **应用识别**：优先扫描 Windows volume mixer/audio session，再补充运行进程、App Paths 和常见安装目录。
+- **语音队列**：通过文件队列接收 Codex/Aural narration 请求，AudioMate 运行时接管朗读流程。
+- **单实例运行**：启动时使用 named mutex 防止多开，避免重复 tray icon 和后台 worker。
+
+---
+
+## 快速安装
+
+通过本地 installer 安装：
+
+```powershell
+.\artifacts\installer\AudioMate-Setup-v0.1.13.exe
+```
+
+从源码构建并打包：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\publish-release.ps1 -Version 0.1.13
+```
+
+开发环境直接运行：
+
+```bash
+dotnet run --project src/AudioMate.App
+```
+
+---
+
+## 目录结构
+
+| 目录 | 说明 |
+| --- | --- |
+| `src/AudioMate.App` | WinForms tray app、设置窗口、启动入口和 Windows UI 集成 |
+| `src/AudioMate.Core` | 配置、音频 ducking、music target、narration queue 和 runtime guard |
+| `tests/AudioMate.Core.Tests` | Core 行为测试与回归测试 |
+| `scripts/installer` | Inno Setup 安装包脚本 |
+| `scripts/codex-aural` | Codex/Aural bridge queue script |
+| `docs/releases` | 版本发布说明 |
+| `artifacts` | 本地 publish output 和 installer output，默认被 Git 忽略 |
+
+---
+
+## 技术栈
+
+- Language: C#
+- Runtime: .NET 9
+- UI: Windows Forms
+- Audio: NAudio
+- Installer: Inno Setup 6
+- Tests: xUnit
+- Platform: Windows
+
+---
+
+## 常用命令
+
+构建：
 
 ```powershell
 dotnet build AudioMate.sln
 ```
 
-## Test
+测试：
 
 ```powershell
 dotnet test AudioMate.sln
 ```
 
-## Run Tray App
-
-```powershell
-dotnet run --project src\AudioMate.App
-```
-
-Installer-driven Codex Aural Skill deployment, microphone trigger detection, fade curves, and richer scan confirmation are the next implementation layers.
-
-## Codex/Aural Bridge
+Codex/Aural bridge：
 
 ```powershell
 scripts\codex-aural\submit-audiomate-narration.ps1 -Text "AudioMate is ready."
 ```
 
-When `AudioMate.App` is running, this writes a JSON narration request into the AudioMate queue. Otherwise it triggers the existing standalone Codex speech fallback.
-
-## Publish Release Candidate
+回滚到本地上一版安装包：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts\publish-release.ps1 -Version 0.1.0
+powershell -ExecutionPolicy Bypass -File scripts\install-previous-release.ps1 -CurrentVersion 0.1.13
 ```
 
-The script runs Release tests, publishes `AudioMate.App`, and compiles the Inno Setup installer when `iscc` is available.
+---
 
-## Roll Back To Previous Local Build
+## License
 
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\install-previous-release.ps1 -CurrentVersion 0.1.8
-```
+作者：Dave-oioioi
+
+项目链接：[github.com/Dave-oioioi/AudioMate](https://github.com/Dave-oioioi/AudioMate)
